@@ -27,6 +27,10 @@ $ kubectl get pods --show-labels -l release=0-5
 
 $ kubectl get pods -o=wide
 
+$ kubectl delete pod webapp-release-0-5
+
+$ kubectl delete pods --all
+
 ```
 # Services
 ```
@@ -43,4 +47,10 @@ $ kubectl rollout history deployment/nginx-deployment --revision=2
 $ kubectl rollout undo deployment/nginx-deployment
 
 $ kubectl get deployment nginx-deployment
+```
+
+# Replicaset
+
+```
+$ kubectl describe rs webapp
 ```
