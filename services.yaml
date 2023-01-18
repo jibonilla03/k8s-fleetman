@@ -35,3 +35,4 @@ spec:
       nodePort: 30010
 
   type: NodePort
+
