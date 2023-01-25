@@ -40,6 +40,10 @@ $ kubectl delete pod webapp-release-0-5
 $ kubectl delete pods --all
 
 $ kubectl get pods --namespace kube-system
+
+$ kubectl exec -it webapp-595f987fd5-kxqqz -- sh
+
+$ kubectl delete -f .
 ```
 # Services
 ```
