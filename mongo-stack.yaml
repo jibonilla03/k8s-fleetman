@@ -21,11 +21,8 @@ spec:
       volumes:
         - name: mongo-persistent-storage
           # pointer to the configuration of HOW we want the mount to be implemented
-          hostPath:
-            path: /home/jbonilla/Abbott/Kubernetes-Hands-On/data/db
-            type: DirectoryOrCreate
-          #persistentVolumeClaim:
-          #  claimName: mongo-pvc
+          persistentVolumeClaim:
+            claimName: mongo-pvc
 ---
 kind: Service
 apiVersion: v1

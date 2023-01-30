@@ -77,3 +77,8 @@ $ kubectl rollout undo deployment/webapp --to-revision=2
 ```
 $ kubectl describe rs webapp
 ```
+# Persistent Volume
+```
+$ kubectl get persistentvolume
+$ kubectl get pvc
+```
