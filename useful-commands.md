@@ -7,6 +7,8 @@ $ kubectl config view
 $ kubectl get all
 
 $ kubectl get all --namespace kube-system
+
+$ kubectl get nodes
 ```
 # Namespaces
 ```
@@ -44,12 +46,18 @@ $ kubectl get pods --namespace kube-system
 $ kubectl exec -it webapp-595f987fd5-kxqqz -- sh
 
 $ kubectl delete -f .
+
+$ kubectl get pods -o wide
 ```
 # Services
 ```
 $ kubectl describe service fleetman-webapp
 
 $ kubectl describe svc kube-dns -n kube-system
+
+$ kubectl get svc
+
+$ kubectl get svc -n kube-system
 ```
 # Deployments
 ```

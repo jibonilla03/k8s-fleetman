@@ -20,7 +20,7 @@ sudo ./aws/install
 
 Now log out of your shell and back in again.
 
-3: Set up a Group
+# 3: Set up a Group
 -----------------
 
 Set up a group with the Permissions of:
@@ -72,9 +72,9 @@ aws iam add-user-to-group --user-name eksUser --group-name eksGroup
 
 aws iam create-access-key --user-name eksUser
 
-aws configure --profile eks-cloud-guru
+aws configure --profile adc-test-sv-eks
 
-export AWS_PROFILE=eks-cloud-guru
+export AWS_PROFILE=adc-test-sv-eks
 
 aws configure list
 
@@ -93,11 +93,30 @@ sudo mv ./kubectl /usr/local/bin/kubectl
 Check the version with "kubectl version --client"
 
 
-# 6: Start your cluster!
+# 6: Creating the Amazon EBS CSI driver IAM role for service accounts
+----------------------
+eksctl create iamserviceaccount \
+  --name ebs-csi-controller-sa \
+  --namespace kube-system \
+  --cluster fleetman \
+  --attach-policy-arn arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy \
+  --approve \
+  --role-only \
+  --role-name AmazonEKS_EBS_CSI_DriverRole
+
+
+ eksctl utils associate-iam-oidc-provider --cluster fleetman --approve
+ eksctl create addon --name aws-ebs-csi-driver --version v1.15.0-eksbuild.1 --attach-policy-arn arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy --cluster fleetman
+
+aws eks describe-addon-versions --addon-name aws-ebs-csi-driver --kubernetes-version 1.24
+
+# 7: Start your cluster!
 ----------------------
 
 aws eks list-clusters
-eksctl create cluster --name fleetman --nodes-min=3
+eksctl create cluster --name fleetman --nodes-min=3 --version 1.22
 kubectl get all
+eksctl delete cluster fleetman
+
 
 

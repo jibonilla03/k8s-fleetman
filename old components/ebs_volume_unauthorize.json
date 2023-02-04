@@ -1,0 +1,142 @@
+{
+  "allowed": false,
+  "explicitDeny": false,
+  "matchedStatements": {
+    "items": []
+  },
+  "failures": {
+    "items": []
+  },
+  "context": {
+    "principal": {
+      "id": "AROAW433CQNX7GDZ2M4H7:i-0ea17c59ece222a95",
+      "arn": "arn:aws:sts::474315129711:assumed-role/eksctl-fleetman-nodegroup-ng-8e8b-NodeInstanceRole-1KJ9O1AYVA17B/i-0ea17c59ece222a95"
+    },
+    "action": "ec2:CreateVolume",
+    "resource": "arn:aws:ec2:us-east-1:474315129711:volume/*",
+    "conditions": {
+      "items": [
+        {
+          "key": "aws:Resource",
+          "values": {
+            "items": [
+              {
+                "value": "volume/*"
+              }
+            ]
+          }
+        },
+        {
+          "key": "aws:Account",
+          "values": {
+            "items": [
+              {
+                "value": "474315129711"
+              }
+            ]
+          }
+        },
+        {
+          "key": "ec2:AvailabilityZone",
+          "values": {
+            "items": [
+              {
+                "value": "us-east-1c"
+              }
+            ]
+          }
+        },
+        {
+          "key": "ec2:Encrypted",
+          "values": {
+            "items": [
+              {
+                "value": "false"
+              }
+            ]
+          }
+        },
+        {
+          "key": "ec2:VolumeType",
+          "values": {
+            "items": [
+              {
+                "value": "gp2"
+              }
+            ]
+          }
+        },
+        {
+          "key": "aws:Region",
+          "values": {
+            "items": [
+              {
+                "value": "us-east-1"
+              }
+            ]
+          }
+        },
+        {
+          "key": "aws:Service",
+          "values": {
+            "items": [
+              {
+                "value": "ec2"
+              }
+            ]
+          }
+        },
+        {
+          "key": "ec2:VolumeID",
+          "values": {
+            "items": [
+              {
+                "value": "*"
+              }
+            ]
+          }
+        },
+        {
+          "key": "ec2:VolumeSize",
+          "values": {
+            "items": [
+              {
+                "value": "7"
+              }
+            ]
+          }
+        },
+        {
+          "key": "aws:Type",
+          "values": {
+            "items": [
+              {
+                "value": "volume"
+              }
+            ]
+          }
+        },
+        {
+          "key": "ec2:Region",
+          "values": {
+            "items": [
+              {
+                "value": "us-east-1"
+              }
+            ]
+          }
+        },
+        {
+          "key": "aws:ARN",
+          "values": {
+            "items": [
+              {
+                "value": "arn:aws:ec2:us-east-1:474315129711:volume/*"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
