@@ -58,6 +58,8 @@ $ kubectl describe svc kube-dns -n kube-system
 $ kubectl get svc
 
 $ kubectl get svc -n kube-system
+
+$ kubectl edit svc monitoring-kube-prometheus-prometheus -n monitoring
 ```
 # Deployments
 ```
