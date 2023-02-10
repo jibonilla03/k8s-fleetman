@@ -1,3 +1,6 @@
+# AWS Account 
+474315129711
+
 WARNING - you MUST delete your cluster when finished.
 -----------------------------------------------------
 
@@ -114,9 +117,19 @@ aws eks describe-addon-versions --addon-name aws-ebs-csi-driver --kubernetes-ver
 ----------------------
 
 aws eks list-clusters
+
 eksctl create cluster --name fleetman --nodes-min=3 --version 1.22
-kubectl get all
+eksctl create cluster --name fleetman --nodes-min=3 --version 1.22 --zones us-east-1a,us-east-1b,us-east-1c
+
+eksctl utils describe-stacks --region=us-east-1 --cluster=fleetman
+
 eksctl delete cluster fleetman
 
 
 
+ # Grafana
+ Login
+ admin
+ prom-operator
+
+ kubectl edit svc -n monitoring monitoring-grafana # Change to LoadBalancer
