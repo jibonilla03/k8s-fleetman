@@ -65,8 +65,19 @@ jobs:
     - name: Update kube config
       run: aws eks update-kubeconfig --name ${{ env.ECS_CLUSTER }} --region ${{ env.AWS_REGIONN }}
 
-    - name: Deploy to EKS
+    - name: Deploy to Monitoring Stack
       run: |
-        kubectl apply -f .
+        kubectl apply -f kube-system/fluentd-config.yaml
+        kubectl apply -f kube-system/elastic-stack.yaml
         kubectl apply -f monitoring/crds.yaml
         kubectl apply -f monitoring/eks-monitoring.yaml
+
+    - name: Deploy to EKS Pre-Prod Environment
+      run: |
+        kubectl apply -f . --namespace=pre-production
+      if: contains(fromJSON('["pull_request"]'), github.event_name)
+    
+    - name: Deploy to EKS Production Environment
+      run: |
+        kubectl apply -f . --namespace=production
+      if: contains(fromJSON('["push"]'), github.event_name)
