@@ -17,8 +17,8 @@
 #
 # 4. Update Kube Config.
 #    Configures kubectl so that you can connect to an Amazon EKS cluster.
-#    The format should follow the output of `aws eks update-kubeconfig --name ${{ env.ECS_CLUSTER }} --region ${{ env.AWS_REGION }}`.
-#    Replace the value of the `ECS_CLUSTER` environment variable in the workflow below with EKS cluster name.
+#    The format should follow the output of `aws eks update-kubeconfig --name ${{ env.EKS_CLUSTER }} --region ${{ env.AWS_REGION }}`.
+#    Replace the value of the `EKS_CLUSTER` environment variable in the workflow below with EKS cluster name.
 #    Replace the value of the `AWS_REGION` environment variable in the workflow below AWS region
 #
 # 5. Deploy to EKS
@@ -63,7 +63,7 @@ jobs:
         aws-region: ${{ env.AWS_REGION }}
 
     - name: Update kube config
-      run: aws eks update-kubeconfig --name ${{ env.ECS_CLUSTER }} --region ${{ env.AWS_REGION }}
+      run: aws eks update-kubeconfig --name ${{ env.EKS_CLUSTER }} --region ${{ env.AWS_REGION }}
 
     - name: Deploy to Monitoring Stack
       run: |
